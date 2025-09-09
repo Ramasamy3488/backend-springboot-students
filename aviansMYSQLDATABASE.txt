@@ -1,0 +1,18 @@
+Service URI:
+
+
+mysql://avnadmin:AVNS_-i-vomDJmdGVMmtbmlz@mysqldatabase-ramasamydatabase.d.aivencloud.com:18561/defaultdb?ssl-mode=REQUIRED
+
+
+Database name:   defaultdb
+
+
+Host:     mysqldatabase-ramasamydatabase.d.aivencloud.com
+
+
+Port:     18561
+
+
+User:       avnadmin
+
+Password:     AVNS_-i-vomDJmdGVMmtbmlz
