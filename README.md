@@ -1,1 +1,100 @@
 # backend-springboot-students
+
+
+Deploying sprinboot application
+
+
+1. create AWS Linux server
+
+2. install MYSQL, git maven
+  
+ maven,
+      sudo wget https://archive.apache.org/dist/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
+      sudo tar -xvzf apache-maven-3.9.4-bin.tar.gz
+      sudo mv apache-maven-3.9.4 /opt/maven
+      sudo nano /etc/profile.d/maven.sh
+         export M2_HOME=/opt/maven
+         export PATH=$M2_HOME/bin:$PATH
+     source /etc/profile.d/maven.sh
+     mvn -version
+MySQL,
+
+sudo dnf install https://dev.mysql.com/get/mysql80-community-release-el9-3.noarch.rpm -y
+
+sudo dnf install mysql-community-server -y
+
+sudo systemctl daemon-reload
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+sudo systemctl status mysqld
+
+
+
+mysql -u root -p
+
+
+sudo grep 'temporary password' /var/log/mysqld.log
+
+
+copy random password and past it.
+
+
+mysql -u root -p
+
+
+install git and maven
+
+java -version
+
+openjdk version "17.0.15" 2025-04-15
+
+cat application.properties
+
+spring.web.resources.static-locations=file:./public/images
+spring.mvc.static-path-pattern=/images/**
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=Rajan@123
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+
+mvn clean install -DskipTests
+
+
+cd target/
+
+mysql -u root -p
+
+SELECT user, host, plugin FROM mysql.user WHERE user = 'root';
+
+If it says auth_socket, run the following to switch to password login:
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Rajan@123';
+FLUSH PRIVILEGES;
+
+
+exit
+
+sudo systemctl status mysql
+
+sudo systemctl start mysql
+
+
+
+nohup java -jar spring-crud-0.0.1-SNAPSHOT.jar &   or  java -jar spring-crud-0.0.1-SNAPSHOT.jar
+
+
+sudo systemctl stop mysql
+
+
+
+sudo rm -rf /etc/mysql /var/lib/mysql
+sudo rm -rf /var/log/mysql*
+sudo rm -rf /var/run/mysqld
+
+
+
+
