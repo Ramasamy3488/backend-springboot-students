@@ -6,7 +6,11 @@ Deploying sprinboot application
 
 1. create AWS Linux server
 
-2. install MYSQL, git maven
+2. install MYSQL, git maven and java
+
+      sudo yum install -y java-21-amazon-corretto-devel
+      java -version
+
   
  maven,
       sudo wget https://archive.apache.org/dist/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
