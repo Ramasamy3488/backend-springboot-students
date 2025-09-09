@@ -18,7 +18,7 @@ import com.example.springboot_crud.entities.Student;
 import com.example.springboot_crud.exception.ResourceNotFoundException;
 import com.example.springboot_crud.repositories.StudentRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/students")
 
@@ -65,4 +65,5 @@ public class StudentController {
 		response.put("Deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);
 	}
+
 }
